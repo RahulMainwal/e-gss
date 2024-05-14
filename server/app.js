@@ -1,7 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const morgan = require("morgan")
+const morgan = require("morgan");
+const path = require('path');
 
 // import external files
 const todoListRouter = require("./routes/todolistRoutes");
@@ -23,6 +24,15 @@ app.use(bodyParser.json()).use(cors({
     optionsSuccessStatus: 200 
 }));
 app.use(express.json());
+
+
+// Define a route to serve the HTML file
+app.use(express.static(path.join(__dirname, '../client/dist')));
+app.get('/', (req, res) => {
+    // Send the HTML file as the response
+    res.sendFile(path.join(__dirname, '/index.html'));
+});
+
 
 // Todo List Routes
 app.use("/api/v1/todo-list", todoListRouter)
