@@ -5,6 +5,7 @@
   "main": "server/app.js",
   "scripts": {
     "start": "nodemon -r dotenv/config server/app.js",
+    "dev": "nodemon -r dotenv/config server/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Rahul Kumar Mainwal",

@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { retrieveAllTodoList, createAnElementInTodoList, updateAnElementFromTodoListById, removeAnElementFromTodoListById, deleteAllElementFromTodoList } = require("../controllers/todoList.controllers");
+const { retrieveAllTodoList, createAnElementInTodoList, updateAnElementFromTodoListById, removeAnElementFromTodoListById, deleteAllElementFromTodoList } = require("../controllers/todolistControllers");
 
 const router = Router();
 

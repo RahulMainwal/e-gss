@@ -1,4 +1,4 @@
-const TodoList = require("../models/todolist.model");
+const TodoList = require("../models/todolistModel");
 const { apiResponse } = require("../utils/apiResponse");
 
 // Get all elements of todo list

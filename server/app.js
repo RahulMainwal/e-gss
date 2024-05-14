@@ -4,7 +4,7 @@ const cors = require("cors");
 const morgan = require("morgan")
 
 // import external files
-const todoListRouter = require("./routes/todolist.routes");
+const todoListRouter = require("./routes/todolistRoutes");
 const connectDB = require("./config/connectDB");
 
 // Create express instance
