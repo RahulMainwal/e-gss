@@ -105,7 +105,7 @@ function TodoList() {
                                 <div className="ms-2 me-auto" style={{whiteSpace: "pre-wrap"}}>
                                     {item.text}
                                 </div>
-                                <span onClick={() => { setIdForUpdate(item._id); setText(item.text); setOpenModal(true); }} data-mdb-toggle="modal" data-mdb-target="#deleteModal" className="hidden-arrow me-3" id="navbarDropdownMenuLinkAction" role="button" aria-expanded="false">
+                                <span onClick={() => { setIdForUpdate(item._id); setText(item.text); setOpenModal(true); }} style={{marginLeft: "10px"}} data-mdb-toggle="modal" data-mdb-target="#deleteModal" className="hidden-arrow me-3" id="navbarDropdownMenuLinkAction" role="button" aria-expanded="false">
                                     <i className="fas fa-pen-to-square"></i>
                                 </span>
                                 <span onClick={() => onRemoveHandler(item._id)} data-mdb-toggle="modal" data-mdb-target="#deleteModal" className="hidden-arrow" id="navbarDropdownMenuLinkAction" role="button" aria-expanded="false">
