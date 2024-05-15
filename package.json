@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon -r dotenv/config server/app.js",
     "dev": "nodemon -r dotenv/config server/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "vercel-build": "echo hello"
   },
   "author": "Rahul Kumar Mainwal",
   "license": "ISC",
