@@ -20,7 +20,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 app.use(bodyParser.json()).use(cors({
-    origin: '*',
+    origin: 'https://localhost:5000',
     optionsSuccessStatus: 200 
 }));
 app.use(express.json());
