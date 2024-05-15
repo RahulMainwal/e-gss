@@ -32,3 +32,9 @@
   z-index: 10;
   padding: 5px;
 }
+
+.textareaForModal:focus {
+  outline: none !important;
+  border:2px solid black;
+  box-shadow: 0 0 5px grey;
+}
