@@ -129,7 +129,7 @@ function TodoList() {
                                 <form>
                                     <div className="mb-3">
                                         <label htmlFor="message-text" className="col-form-label">Enter the task here:</label>
-                                        <textarea value={text} onChange={(e) => setText(e.target.value)} className="form-control input input-outline-dark" id="message-text"></textarea>
+                                        <textarea value={text} onChange={(e) => setText(e.target.value)} className="textareaForModal form-control input input-outline-dark" id="message-text"></textarea>
                                     </div>
                                 </form>
                             </div>
