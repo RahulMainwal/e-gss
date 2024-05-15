@@ -102,7 +102,7 @@ function TodoList() {
                     {
                         items.map((item) => (
                             <li key={item._id} style={{ paddingLeft: "10px", paddingRight: "10px", margin: "10px 0", backgroundColor: "white", borderRadius: "5px", boxShadow: "rgb(229, 229, 223) 1px 1px 2px 1px" }} className="todo_list_item list-group-item d-flex justify-content-between align-items-start">
-                                <div className="ms-2 me-auto">
+                                <div className="ms-2 me-auto" style={{whiteSpace: "pre-wrap"}}>
                                     {item.text}
                                 </div>
                                 <span onClick={() => { setIdForUpdate(item._id); setText(item.text); setOpenModal(true); }} data-mdb-toggle="modal" data-mdb-target="#deleteModal" className="hidden-arrow me-3" id="navbarDropdownMenuLinkAction" role="button" aria-expanded="false">
