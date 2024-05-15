@@ -1,4 +1,4 @@
-const app = require("./server/app.js");
+const app = require("../server/app.js");
 
 // const vercelApp = app;
 
