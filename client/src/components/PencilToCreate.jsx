@@ -2,31 +2,34 @@ import React, { useEffect, useState } from 'react';
 import "../App.css"
 import axios from 'axios';
 
-function PencilToCreate({getCurrenItems}) {
+function PencilToCreate({ getCurrenItems }) {
 
   const [openModal, setOpenModal] = useState(false);
   const [text, setText] = useState("");
-  
-  const onCreateHandler = async() => {
+  const inputRef = React.useRef(null);
+
+  const onCreateHandler = async () => {
     try {
-      const {data} = await axios.post(`${import.meta.env.VITE_APP_BASE_URL}/create-a-new-element`, {text});
+      const { data } = await axios.post(`${import.meta.env.VITE_APP_BASE_URL}/create-a-new-element`, { text });
       getCurrenItems(data)
       setText("")
-  } catch (error) {
+    } catch (error) {
       console.log(error)
-  }
-  setOpenModal(false)
+    }
+    setOpenModal(false)
   }
 
   useEffect(() => {
     if (openModal) {
+      console.log(inputRef)
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
       document.body.style.overflow = "hidden";
-    }else{
-      
-        document.body.style.overflow = "scroll"
-  
+    } else {
+      document.body.style.overflow = "scroll";
     }
-  }, [openModal]); 
+  }, [openModal]);
 
   return (
     <div>
@@ -47,7 +50,7 @@ function PencilToCreate({getCurrenItems}) {
                 <form>
                   <div className="mb-3">
                     <label htmlFor="message-text" className="col-form-label">Enter the task here:</label>
-                    <textarea value={text} onChange={(e) => setText(e.target.value)} className="form-control input input-outline-dark" id="message-text"></textarea>
+                    <textarea ref={inputRef} value={text} onChange={(e) => setText(e.target.value)} className="textareaForModal form-control input input-outline-dark" id="message-text"></textarea>
                   </div>
                 </form>
               </div>
