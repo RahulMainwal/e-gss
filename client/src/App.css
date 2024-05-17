@@ -38,3 +38,30 @@
   border:2px solid black;
   box-shadow: 0 0 5px grey;
 }
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 45px;
+  aspect-ratio: .75;
+  --c: no-repeat linear-gradient(#000 0 0);
+  background: 
+    var(--c) 0%   100%,
+    var(--c) 50%  100%,
+    var(--c) 100% 100%;
+  background-size: 20% 65%;
+  animation: l5 1s infinite linear;
+}
+@keyframes l5 {
+  20% {background-position: 0% 50% ,50% 100%,100% 100%}
+  40% {background-position: 0% 0%  ,50% 50% ,100% 100%}
+  60% {background-position: 0% 100%,50% 0%  ,100% 50% }
+  80% {background-position: 0% 100%,50% 100%,100% 0%  }
+}
+
+.loader_wrapper {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  rotate: 270deg;
+}
