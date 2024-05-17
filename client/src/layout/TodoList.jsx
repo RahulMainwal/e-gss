@@ -102,7 +102,9 @@ function TodoList() {
                     {
                         items.length === 0
                         ?
-                        <h3>Empty! todolist</h3>
+                        <div>
+                        <img src="https://i.pinimg.com/originals/ae/8a/c2/ae8ac2fa217d23aadcc913989fcc34a2.png" alt="cart" style={{display: "block", margin: "auto", maxWidth: "500px", width: "100%"}} />
+                        </div>
                         :
                         items.map((item) => (
                             <li key={item._id} style={{ paddingLeft: "10px", paddingRight: "10px", margin: "10px 0", backgroundColor: "white", borderRadius: "5px", boxShadow: "rgb(229, 229, 223) 1px 1px 2px 1px" }} className="todo_list_item list-group-item d-flex justify-content-between align-items-start">
