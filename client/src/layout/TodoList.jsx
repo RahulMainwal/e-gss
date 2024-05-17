@@ -100,6 +100,10 @@ function TodoList() {
             <div className='container'>
                 <ol className="list-group list-group-light my-2">
                     {
+                        items.length === 0
+                        ?
+                        <h3>Empty! todolist</h3>
+                        :
                         items.map((item) => (
                             <li key={item._id} style={{ paddingLeft: "10px", paddingRight: "10px", margin: "10px 0", backgroundColor: "white", borderRadius: "5px", boxShadow: "rgb(229, 229, 223) 1px 1px 2px 1px" }} className="todo_list_item list-group-item d-flex justify-content-between align-items-start">
                                 <div className="ms-2 me-auto" style={{whiteSpace: "pre-wrap"}}>
