@@ -9,6 +9,7 @@ function TodoList() {
     const [text, setText] = useState("");
     const [openModal, setOpenModal] = useState(false);
     const [idForUpdate, setIdForUpdate] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const onRemoveHandler = async (id) => {
         try {
@@ -75,9 +76,12 @@ function TodoList() {
 
     useEffect(() => {
         (async () => {
+
+            setLoading(true)
             try {
                 const { data } = await axios.get(`${import.meta.env.VITE_APP_BASE_URL}/retrieve-all-elements`);
                 setItems(data.data)
+                setLoading(false)
             } catch (error) {
                 console.log(error)
             }
@@ -97,32 +101,39 @@ function TodoList() {
     return (
         <>
             <Header onDeleteAllItemsHandler={onDeleteAllItemsHandler} />
-            <div className='container'>
-                <ol className="list-group list-group-light my-2">
-                    {
-                        items.length === 0
-                        ?
-                        <div>
-                        <img src="https://i.pinimg.com/originals/ae/8a/c2/ae8ac2fa217d23aadcc913989fcc34a2.png" alt="cart" style={{display: "block", margin: "auto", maxWidth: "500px", width: "100%"}} />
-                        </div>
-                        :
-                        items.map((item) => (
-                            <li key={item._id} style={{ paddingLeft: "10px", paddingRight: "10px", margin: "10px 0", backgroundColor: "white", borderRadius: "5px", boxShadow: "rgb(229, 229, 223) 1px 1px 2px 1px" }} className="todo_list_item list-group-item d-flex justify-content-between align-items-start">
-                                <div className="ms-2 me-auto" style={{whiteSpace: "pre-wrap"}}>
-                                    {item.text}
-                                </div>
-                                <span onClick={() => { setIdForUpdate(item._id); setText(item.text); setOpenModal(true); }} style={{marginLeft: "10px"}} data-mdb-toggle="modal" data-mdb-target="#deleteModal" className="hidden-arrow me-3" id="navbarDropdownMenuLinkAction" role="button" aria-expanded="false">
-                                    <i className="fas fa-pen-to-square"></i>
-                                </span>
-                                <span onClick={() => onRemoveHandler(item._id)} data-mdb-toggle="modal" data-mdb-target="#deleteModal" className="hidden-arrow" id="navbarDropdownMenuLinkAction" role="button" aria-expanded="false">
-                                    <i className="fas fa-trash"></i>
-                                </span>
-                            </li>
-                        ))
-                    }
-                </ol>
-                <PencilToCreate getCurrenItems={getCurrenItems} />
-            </div>
+            {
+
+                loading
+                    ?
+                    <div className='loader_wrapper'><div className='loader'></div></div>
+                    :
+                    <div className='container'>
+                        <ol className="list-group list-group-light my-2">
+                            {
+                                items.length === 0
+                                    ?
+                                    <div>
+                                        <img src="https://i.pinimg.com/originals/ae/8a/c2/ae8ac2fa217d23aadcc913989fcc34a2.png" alt="cart" style={{ display: "block", margin: "auto", maxWidth: "500px", width: "100%" }} />
+                                    </div>
+                                    :
+                                    items.map((item) => (
+                                        <li key={item._id} style={{ paddingLeft: "10px", paddingRight: "10px", margin: "10px 0", backgroundColor: "white", borderRadius: "5px", boxShadow: "rgb(229, 229, 223) 1px 1px 2px 1px" }} className="todo_list_item list-group-item d-flex justify-content-between align-items-start">
+                                            <div className="ms-2 me-auto" style={{ whiteSpace: "pre-wrap" }}>
+                                                {item.text}
+                                            </div>
+                                            <span onClick={() => { setIdForUpdate(item._id); setText(item.text); setOpenModal(true); }} style={{ marginLeft: "10px" }} data-mdb-toggle="modal" data-mdb-target="#deleteModal" className="hidden-arrow me-3" id="navbarDropdownMenuLinkAction" role="button" aria-expanded="false">
+                                                <i className="fas fa-pen-to-square"></i>
+                                            </span>
+                                            <span onClick={() => onRemoveHandler(item._id)} data-mdb-toggle="modal" data-mdb-target="#deleteModal" className="hidden-arrow" id="navbarDropdownMenuLinkAction" role="button" aria-expanded="false">
+                                                <i className="fas fa-trash"></i>
+                                            </span>
+                                        </li>
+                                    ))
+                            }
+                        </ol>
+                        <PencilToCreate getCurrenItems={getCurrenItems} />
+                    </div>
+            }
             {
                 openModal && <div className='overlay'>
                     <div className="modal-dialog" style={{ background: "white" }}>
