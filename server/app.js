@@ -27,11 +27,11 @@ app.use(express.json());
 
 
 // Define a route to serve the HTML file
-//app.use(express.static(path.join(__dirname, '../client/dist')));
-//app.get('/', (req, res) => {
+app.use(express.static(path.join(__dirname, '../client/dist')));
+app.get('/', (req, res) => {
     // Send the HTML file as the response
-    //res.sendFile(path.join(__dirname, '/index.html'));
-//});
+    res.sendFile(path.join(__dirname, '/index.html'));
+});
 
 
 // Todo List Routes
