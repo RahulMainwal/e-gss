@@ -4,7 +4,7 @@ import logo from "../assets/logo.png";
 function Header({onDeleteAllItemsHandler}) {
 
   return (
-    <div style={{zIndex: 5}}>
+    <div style={{zIndex: 5, left: 0, right: 0, top: 0, position: "sticky"}}>
       <nav className="navbar navbar-expand-lg navbar-light bg-body-tertiary">
         <div className="container" style={{marginBottom: "5px"}}>
           <span>
